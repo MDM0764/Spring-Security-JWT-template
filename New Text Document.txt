@@ -1,0 +1,32 @@
+CREATE TABLE `user_management`.`user` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+`password` VARCHAR(45) NOT NULL 
+  `email` VARCHAR(45) NULL,
+  `phno` DECIMAL(10) NULL,
+  `role` INT NULL,
+  `address` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+ALTER TABLE `user_management`.`user` 
+ADD INDEX `role` (`role` ASC) VISIBLE;
+;
+
+
+CREATE TABLE `user_management`.`role` (
+  `id` INT NOT NULL,
+  `Desc` VARCHAR(45) NULL,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `role`
+    FOREIGN KEY (`id`)
+    REFERENCES `user_management`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `user_management`.`user` 
+ADD CONSTRAINT `role_id`
+  FOREIGN KEY (`role`)
+  REFERENCES `user_management`.`role` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
