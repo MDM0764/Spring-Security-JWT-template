@@ -3,6 +3,7 @@ package com.mdm.user.management.controller;
 import com.mdm.user.management.entities.AppUser;
 import com.mdm.user.management.repositories.userRepo;
 import com.mdm.user.management.service.MyUserService;
+import com.mdm.user.management.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class UserController {
     private userRepo repo;
 
     @Autowired
-    private MyUserService service;
+    private SecurityService service;
 
     @GetMapping("/access")
     public String access() {
